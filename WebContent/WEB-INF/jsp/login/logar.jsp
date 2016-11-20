@@ -7,7 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Alô Mundo 2</h1>
-	${ teste }
+	<form action="http://localhost:8080/Exercici-POO-2/login/logar" method="post">
+		<fieldset>
+			<label>CPF:</label>
+			<input type="text" name="cpf" />
+			<br>
+			<label>Senha:</label>
+			<input type="password" name="senha"/>
+			<br>
+			<input type="submit" value="Logar"/>
+			<input type="reset" value="Resetar"/>
+		</fieldset>
+	</form>	
 </body>
 </html>
