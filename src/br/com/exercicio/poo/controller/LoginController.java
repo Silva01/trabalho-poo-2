@@ -1,5 +1,7 @@
 package br.com.exercicio.poo.controller;
 
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.exercicio.poo.model.SessaoUsuario;
@@ -18,6 +20,11 @@ public class LoginController {
 		this.sessaoUsuario = sessaoUsuario;
 	}
 	
+	public void logar(){
+		
+	}
+	
+	@Post("/validar")
 	public void logar(String cpf, String senha){
 		if (cpf != null) {
 			Usuario usuario = login.validarLogin(cpf, senha);
@@ -28,5 +35,12 @@ public class LoginController {
 				result.redirectTo(IndexController.class).listar();
 			}
 		}
-	}	
+	}
+	
+	@Path("/logout")
+	public void logout(){
+		sessaoUsuario.logout();
+		result.redirectTo(LoginController.class).logar();
+		
+	}
 }

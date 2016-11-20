@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Bem Vindo Usuário</h1>
+	<a href="http://localhost:8080/Exercici-POO-2/deslogar">Logout</a>
 </body>
 </html>
