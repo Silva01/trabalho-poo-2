@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/Exercici-POO-2/validar" method="post">
+	<form action="/Exercici-POO-2/login/logar" method="post">
 		<fieldset>
 			<label>CPF:</label>
 			<input type="text" name="cpf" />

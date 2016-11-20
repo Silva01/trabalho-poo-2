@@ -8,7 +8,7 @@ public class Login {
 	private UsuarioDAO usuarioDAO;
 	
 	public Login() {
-		this.usuarioDAO = new UsuarioDAO(new Usuario());
+		this.usuarioDAO = new UsuarioDAO();
 	}
 
 	public Usuario validarLogin(String cpf, String senha){		

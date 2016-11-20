@@ -2,6 +2,7 @@ package br.com.exercicio.poo.model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mysql.cj.jdbc.PreparedStatement;
@@ -11,17 +12,37 @@ import br.com.exercicio.poo.conexao.Conexao;
 
 @Component
 public class UsuarioDAO {
-
-	private Usuario usuario;
+	
 	private Connection conn;
 	
-	public UsuarioDAO(Usuario usuario) {
-		this.usuario = usuario;
+	public UsuarioDAO() {		
 		this.conn = new Conexao().getConexao();
 	}
 	
 	public List<Usuario> listarUsuarios(){
-		return null;
+		List<Usuario> listaDeUsuarios = new ArrayList<Usuario>();
+		String query = "SELECT * FROM teste.usuarios";
+		
+		try {
+			PreparedStatement stm = (PreparedStatement) conn.prepareStatement(query);
+			ResultSet result = stm.executeQuery();
+			
+			while (result.next()) {
+				Usuario usuario = new Usuario();
+				usuario.setNome(result.getString("nome"));
+				usuario.setEndereco(result.getString("endereco"));
+				usuario.setCpf(result.getString("cpf"));
+				usuario.setIdade(result.getInt("idade"));
+				
+				listaDeUsuarios.add(usuario);
+				
+			}
+			
+			return listaDeUsuarios;
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public Usuario listarUsuariosPorCPF(String cpf, String senha){

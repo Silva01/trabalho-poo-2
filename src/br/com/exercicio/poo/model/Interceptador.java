@@ -27,6 +27,6 @@ public class Interceptador implements Interceptor {
 
 	@Override
 	public void intercept(InterceptorStack arg0, ResourceMethod arg1, Object arg2) throws InterceptionException {
-		result.redirectTo(LoginController.class).logar("", "");		
+		result.redirectTo(LoginController.class).logar(null, null);		
 	}	
 }
