@@ -73,7 +73,20 @@ public class UsuarioDAO {
 	}
 	
 	public void incluirUsuario(Usuario novoUsuario){
-		
+		String query = "INSERT INTO teste.usuarios (nome, cpf, endereco, idade, senha) VALUES(?,?,?,?, md5(?))";
+		try {
+			PreparedStatement stm = (PreparedStatement) conn.prepareStatement(query);
+			stm.setString(1, novoUsuario.getNome());
+			stm.setString(2, novoUsuario.getCpf());
+			stm.setString(3, novoUsuario.getEndereco());
+			stm.setInt(4, novoUsuario.getIdade());
+			stm.setString(5, novoUsuario.getSenha());
+			
+			stm.execute();
+			stm.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public void atualizarUsuario(Usuario usuarioAtualizado){

@@ -7,18 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/Exercici-POO-2/login/logar" method="post">
+	<form action="/Exercici-POO-2/login/cadastrar" method="post">
 		<fieldset>
+			<label>Nome:</label>
+			<input type="text" name="usuario.nome"/>
+			<br>
 			<label>CPF:</label>
-			<input type="text" name="cpf" />
+			<input type="text" name="usuario.cpf"/>
+			<br>
+			<label>Endereço:</label>
+			<input type="text" name="usuario.endereco"/>
+			<br>
+			<label>Idade:</label>
+			<input type="number" name="usuario.idade"/>
 			<br>
 			<label>Senha:</label>
-			<input type="password" name="senha"/>
+			<input type="password" name="usuario.senha"/>
 			<br>
-			<input type="submit" value="Logar"/>
+			<input type="submit" value="Cadastrar"/>
 			<input type="reset" value="Resetar"/>
-			<a href="/Exercici-POO-2/login/cadastrar">Cadastre-se</a>
 		</fieldset>
-	</form>	
+	</form>
 </body>
 </html>

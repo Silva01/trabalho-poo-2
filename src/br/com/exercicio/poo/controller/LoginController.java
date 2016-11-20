@@ -4,6 +4,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.exercicio.poo.model.SessaoUsuario;
 import br.com.exercicio.poo.model.Usuario;
+import br.com.exercicio.poo.model.UsuarioDAO;
 
 @Resource
 public class LoginController {
@@ -19,6 +20,7 @@ public class LoginController {
 	}
 	
 	public void logar(String cpf, String senha){
+		System.out.println(cpf);
 		if (cpf != null) {
 			Usuario usuario = login.validarLogin(cpf, senha);
 			if (usuario == null) {
@@ -34,5 +36,13 @@ public class LoginController {
 		sessaoUsuario.logout();
 		result.redirectTo(LoginController.class).logar(null,null);
 		
+	}
+	
+	public void cadastrar(Usuario usuario){
+		if (usuario != null && usuario.getCpf() != null) {
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			usuarioDAO.incluirUsuario(usuario);
+			result.redirectTo(LoginController.class).logar(null, null);
+		}
 	}
 }
