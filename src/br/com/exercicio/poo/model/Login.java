@@ -13,7 +13,9 @@ public class Login {
 
 	public Usuario validarLogin(String cpf, String senha){		
 		Usuario usuario = usuarioDAO.listarUsuariosPorCPF(cpf, senha);		
-		if (usuario.getCpf().equals(cpf)) {
+		if (usuario.getCpf() == null) {
+			return null;
+		}else if (usuario.getCpf().equals(cpf)) {
 			return usuario;
 		}
 		return null;

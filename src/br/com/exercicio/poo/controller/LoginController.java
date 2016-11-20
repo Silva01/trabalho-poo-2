@@ -23,7 +23,7 @@ public class LoginController {
 		if (cpf != null) {
 			Usuario usuario = login.validarLogin(cpf, senha);
 			if (usuario == null) {
-				
+				result.redirectTo(LoginController.class).logar(null, null);
 			} else {
 				sessaoUsuario.login(usuario);
 				result.redirectTo(IndexController.class).listar();
