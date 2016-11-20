@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.ioc.SessionScoped;
 public class SessaoUsuario {
 
 	private Usuario usuario;
+	private int id;
 	
 	public void login(Usuario usuario) {
 		this.usuario = usuario;
@@ -23,5 +24,13 @@ public class SessaoUsuario {
 	
 	public void logout(){
 		this.usuario = null;
-	}	
+	}
+	
+	public void setId(int id){
+		this.id = id;
+	}
+	
+	public int getId(){
+		return id;
+	}
 }

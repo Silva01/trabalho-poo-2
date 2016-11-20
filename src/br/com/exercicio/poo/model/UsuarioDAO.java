@@ -29,6 +29,7 @@ public class UsuarioDAO {
 			
 			while (result.next()) {
 				Usuario usuario = new Usuario();
+				usuario.setId(result.getInt("id"));
 				usuario.setNome(result.getString("nome"));
 				usuario.setEndereco(result.getString("endereco"));
 				usuario.setCpf(result.getString("cpf"));
@@ -72,6 +73,30 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public Usuario buscarUsuarioPorId(int id){
+		Usuario usuario = new Usuario();
+		String query = "SELECT * FROM teste.usuarios WHERE id = ?";
+		
+		try {
+			PreparedStatement stm = (PreparedStatement) conn.prepareStatement(query);
+			stm.setInt(1, id);
+			
+			ResultSet result = stm.executeQuery();
+			if (result.next()) {				
+				usuario.setId(result.getInt("id"));
+				usuario.setNome(result.getString("nome"));
+				usuario.setCpf(result.getString("cpf"));
+				usuario.setEndereco(result.getString("endereco"));
+				usuario.setIdade(result.getInt("idade"));				
+			}
+			
+			stm.close();
+			return usuario;			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public void incluirUsuario(Usuario novoUsuario){
 		String query = "INSERT INTO teste.usuarios (nome, cpf, endereco, idade, senha) VALUES(?,?,?,?, md5(?))";
 		try {
@@ -90,11 +115,37 @@ public class UsuarioDAO {
 	}
 	
 	public void atualizarUsuario(Usuario usuarioAtualizado){
+		String query;		
+		if (usuarioAtualizado.getSenha() == "" || usuarioAtualizado.getSenha() == null) {
+			query = "UPDATE teste.usuarios SET nome = ?, cpf = ?, endereco = ?, idade = ? WHERE id = ?";
+		} else {
+			query = "UPDATE teste.usuarios SET nome = ?, cpf = ?, endereco = ?, idade = ?, senha = md5(?) WHERE id = ?";
+		}
+		
+		try {
+			PreparedStatement stm = (PreparedStatement) conn.prepareStatement(query);
+			stm.setString(1, usuarioAtualizado.getNome());
+			stm.setString(2, usuarioAtualizado.getCpf());
+			stm.setString(3, usuarioAtualizado.getEndereco());
+			stm.setInt(4, usuarioAtualizado.getIdade());
+			stm.setInt(5, usuarioAtualizado.getId());
+			
+			stm.execute();
+			stm.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 		
 	}
 	
 	public void excluirUsuario(int id){
+		String query = "DELETE FROM teste.usuarios WHERE id = ?";
 		
+		try {
+			
+		} catch (Exception e) {
+			
+		}
 	}
 	
 }

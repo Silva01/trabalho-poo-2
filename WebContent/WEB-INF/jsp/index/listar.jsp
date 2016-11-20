@@ -37,7 +37,7 @@
 						<td>${ lista.endereco }</td>
 						<td>${ lista.idade }</td>
 						<td><a href="#">Excluir</a></td>
-						<td><a href="#">Atualizar</a></td>
+						<td><a href="http://localhost:8080/Exercici-POO-2/index/atualizar?ids=${ lista.id }">Atualizar</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

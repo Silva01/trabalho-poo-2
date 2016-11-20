@@ -19,8 +19,7 @@ public class LoginController {
 		this.sessaoUsuario = sessaoUsuario;
 	}
 	
-	public void logar(String cpf, String senha){
-		System.out.println(cpf);
+	public void logar(String cpf, String senha){		
 		if (cpf != null) {
 			Usuario usuario = login.validarLogin(cpf, senha);
 			if (usuario == null) {
