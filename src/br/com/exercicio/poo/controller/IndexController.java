@@ -48,6 +48,7 @@ public class IndexController {
 	@Liberado
 	public void excluir(int id){
 		usuarioDAO.excluirUsuario(id);
+		result.redirectTo(IndexController.class).listar();
 	}
 
 }

@@ -142,9 +142,13 @@ public class UsuarioDAO {
 		String query = "DELETE FROM teste.usuarios WHERE id = ?";
 		
 		try {
+			PreparedStatement stm = (PreparedStatement) conn.prepareStatement(query);
+			stm.setInt(1, id);
 			
+			stm.execute();
+			stm.close();
 		} catch (Exception e) {
-			
+			throw new RuntimeException(e);
 		}
 	}
 	
