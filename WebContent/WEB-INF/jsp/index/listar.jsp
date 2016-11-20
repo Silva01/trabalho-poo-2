@@ -7,17 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/Exercici-POO-2/login/logar" method="post">
-		<fieldset>
-			<label>CPF:</label>
-			<input type="text" name="cpf" />
-			<br>
-			<label>Senha:</label>
-			<input type="password" name="senha"/>
-			<br>
-			<input type="submit" value="Logar"/>
-			<input type="reset" value="Resetar"/>
-		</fieldset>
-	</form>	
+	<h1>Bem Vindo Usuário</h1>
 </body>
 </html>
