@@ -5,8 +5,7 @@ import br.com.caelum.vraptor.Resource;
 @Resource
 public class Login {
 
-	public boolean login(){
-		return true;
-	}
-	
+	public String logar(){
+		return "True";
+	}	
 }

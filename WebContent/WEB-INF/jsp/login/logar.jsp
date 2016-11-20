@@ -7,14 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="">
-		<fieldset>
-			<label>CPF:</label>
-			<input type="text" name="cpf" />
-			<label>Senha:</label>
-			<input type="password" name="senha"/>
-			<input type="submit" value="Logar"/>
-		</fieldset>
-	</form>
+	<h1>Alô Mundo 2</h1>
+	${ teste }
 </body>
 </html>
